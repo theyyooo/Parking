@@ -3,6 +3,8 @@ package main;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import Controller.MainController;
+
 public class App {
 
 	public static void main(String[] args) {
@@ -12,6 +14,7 @@ public class App {
 		try {
 			Connection cnx = Singleton.getInstance().cnx;
 			System.out.println("Connexion ok");
+			MainController main = new MainController(cnx);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
