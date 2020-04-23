@@ -5,11 +5,16 @@ import java.awt.EventQueue;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import DAO.User;
+import Model.UserTableModel;
 
 import java.awt.Font;
 import java.awt.TextField;
 import java.text.DateFormat;
 import java.text.Format;
+import java.util.ArrayList;
 import java.awt.CardLayout;
 import java.awt.Label;
 import java.awt.SystemColor;
@@ -29,6 +34,9 @@ public class Fenetre extends JFrame {
 	private JButton btnCliquerIci_1;
 	private JButton btnCliquerIci_1_1;
 	private JButton btnCliquerIci_1_1_1;
+	private JButton btnCliquerIci_1_1_2;
+	private JLabel lblTouteLesLocations;
+	private JButton btnCliquerIci_2;
 //Nouvelle Location
 	public JPanel NouvelleLocation;
 	private JButton btnRetour;
@@ -67,9 +75,30 @@ public class Fenetre extends JFrame {
 	public JLabel lblNewLabel_8;
 //Afficher user
 	public JPanel AfficherCollaborateurs;
+	private JTable table;
+	private JPanel panel_1;
+	private JButton btnRetour_2_1;
+//Afficher Parking
+	public JPanel AfficherParkings;
+	private JTable table_1;
+	private JPanel panel_2;
+	private JButton btnRetour_2_2;
+
+//Afficher Locations
+	public JPanel AfficherLocations;
+	private JTable table_2;
+	private JPanel panel_3;
+	private JButton btnRetour_2_3;
 //Autres	
 	private JPanel contentPane;
 	private JLayeredPane layeredPane;
+	private JButton btnRetour_2_1_1;
+
+
+
+
+
+
 	
 	
 	/**
@@ -164,46 +193,68 @@ public class Fenetre extends JFrame {
 		JLabel lblNewLabel = new JLabel("Ajouter une nouvelle location de voiture");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(0, 10, 1000, 40);
+		lblNewLabel.setBounds(0, 10, 500, 40);
 		Home.add(lblNewLabel);
 		
 		btnCliquerIci = new JButton("Cliquer ici");
-		btnCliquerIci.setBounds(425, 70, 150, 30);
+		btnCliquerIci.setBounds(175, 70, 150, 30);
 		btnCliquerIci.setName("nouvelle_location");
 		Home.add(btnCliquerIci);
 		
 		JLabel lblAjouterUnCollaborateur = new JLabel("Ajouter un collaborateur");
 		lblAjouterUnCollaborateur.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAjouterUnCollaborateur.setFont(new Font("Dialog", Font.BOLD, 20));
-		lblAjouterUnCollaborateur.setBounds(0, 100, 1000, 60);
+		lblAjouterUnCollaborateur.setBounds(0, 100, 500, 60);
 		Home.add(lblAjouterUnCollaborateur);
 		
 		btnCliquerIci_1 = new JButton("Cliquer ici");
 		btnCliquerIci_1.setName("nouveau_collaborateur");
-		btnCliquerIci_1.setBounds(425, 170, 150, 30);
+		btnCliquerIci_1.setBounds(175, 170, 150, 30);
 		Home.add(btnCliquerIci_1);
 		
 		JLabel lblAjouterUnParking = new JLabel("Ajouter un parking");
 		lblAjouterUnParking.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAjouterUnParking.setFont(new Font("Dialog", Font.BOLD, 20));
-		lblAjouterUnParking.setBounds(0, 213, 1000, 60);
+		lblAjouterUnParking.setBounds(0, 213, 500, 60);
 		Home.add(lblAjouterUnParking);
 		
 		btnCliquerIci_1_1 = new JButton("Cliquer ici");
 		btnCliquerIci_1_1.setName("nouveau_parking");
-		btnCliquerIci_1_1.setBounds(425, 283, 150, 30);
+		btnCliquerIci_1_1.setBounds(175, 283, 150, 30);
 		Home.add(btnCliquerIci_1_1);
 		
 		JLabel lblToutLesCollaborateur = new JLabel("Tout les collaborateurs");
 		lblToutLesCollaborateur.setHorizontalAlignment(SwingConstants.CENTER);
 		lblToutLesCollaborateur.setFont(new Font("Dialog", Font.BOLD, 20));
-		lblToutLesCollaborateur.setBounds(0, 325, 1000, 60);
+		lblToutLesCollaborateur.setBounds(500, 100, 500, 60);
 		Home.add(lblToutLesCollaborateur);
 		
 		btnCliquerIci_1_1_1 = new JButton("Cliquer ici");
 		btnCliquerIci_1_1_1.setName("afficher_collaborateurs");
-		btnCliquerIci_1_1_1.setBounds(425, 395, 150, 30);
+		btnCliquerIci_1_1_1.setBounds(675, 170, 150, 30);
 		Home.add(btnCliquerIci_1_1_1);
+		
+		JLabel lblToutLesParkings = new JLabel("Tout les parkings");
+		lblToutLesParkings.setHorizontalAlignment(SwingConstants.CENTER);
+		lblToutLesParkings.setFont(new Font("Dialog", Font.BOLD, 20));
+		lblToutLesParkings.setBounds(500, 213, 500, 60);
+		Home.add(lblToutLesParkings);
+		
+		btnCliquerIci_1_1_2 = new JButton("Cliquer ici");
+		btnCliquerIci_1_1_2.setName("afficher_parkings");
+		btnCliquerIci_1_1_2.setBounds(675, 283, 150, 30);
+		Home.add(btnCliquerIci_1_1_2);
+		
+		lblTouteLesLocations = new JLabel("Toutes les locations");
+		lblTouteLesLocations.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTouteLesLocations.setFont(new Font("Dialog", Font.BOLD, 20));
+		lblTouteLesLocations.setBounds(500, 10, 500, 40);
+		Home.add(lblTouteLesLocations);
+		
+		btnCliquerIci_2 = new JButton("Cliquer ici");
+		btnCliquerIci_2.setName("afficher_locations");
+		btnCliquerIci_2.setBounds(675, 70, 150, 30);
+		Home.add(btnCliquerIci_2);
 		
 		NouvelleLocation = new JPanel();
 		layeredPane.add(NouvelleLocation, "name_3899574615604");
@@ -440,9 +491,97 @@ public class Fenetre extends JFrame {
 		lblNewLabel_8.setBounds(0, 422, 1000, 30);
 		NouveauParking.add(lblNewLabel_8);
 		
+		//
+		
 		AfficherCollaborateurs = new JPanel();
 		layeredPane.add(AfficherCollaborateurs, "name_71647849530794");
 		AfficherCollaborateurs.setLayout(null);
+		table = new JTable();
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 150, 990, 435);
+		AfficherCollaborateurs.add(scrollPane);
+		table.setModel(new DefaultTableModel(new Object[][] {{null, null, null}}, new String[] {"test", "test", "test"}));
+		scrollPane.setViewportView(table);
+		table.setBounds(50, 119, 900, 370);
+		
+		panel_1 = new JPanel();
+		panel_1.setBounds(0, 50, 990, 50);
+		AfficherCollaborateurs.add(panel_1);
+		
+		JLabel lblCollaborateurs = new JLabel("Collaborateurs: ");
+		panel_1.add(lblCollaborateurs);
+		lblCollaborateurs.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCollaborateurs.setFont(new Font("Dialog", Font.BOLD, 30));
+		
+		btnRetour_2_1 = new JButton("Retour");
+		btnRetour_2_1.setName("retour");
+		btnRetour_2_1.setBackground(UIManager.getColor("Button.darkShadow"));
+		btnRetour_2_1.setBounds(12, 12, 117, 25);
+		AfficherCollaborateurs.add(btnRetour_2_1);
+		
+		btnRetour_2_1_1 = new JButton("Supprimer");
+		btnRetour_2_1_1.setName("supprimer");
+		btnRetour_2_1_1.setBackground(UIManager.getColor("Button.darkShadow"));
+		btnRetour_2_1_1.setBounds(416, 112, 117, 25);
+		AfficherCollaborateurs.add(btnRetour_2_1_1);
+		
+		//
+				
+		AfficherParkings = new JPanel();
+		layeredPane.add(AfficherParkings, "name_71647849530795");
+		AfficherParkings.setLayout(null);
+		table_1 = new JTable();
+		JScrollPane scrollPane2 = new JScrollPane();
+		scrollPane2.setBounds(0, 150, 990, 435);
+		AfficherParkings.add(scrollPane2);
+		table_1.setModel(new DefaultTableModel(new Object[][] {{null, null, null}}, new String[] {"test", "test", "test"}));
+		scrollPane2.setViewportView(table_1);
+		table_1.setBounds(50, 119, 900, 370);
+		
+		panel_2 = new JPanel();
+		panel_2.setBounds(0, 50, 990, 50);
+		AfficherParkings.add(panel_2);
+		
+		JLabel lblParking = new JLabel("Parkings: ");
+		panel_2.add(lblParking);
+		lblParking.setHorizontalAlignment(SwingConstants.CENTER);
+		lblParking.setFont(new Font("Dialog", Font.BOLD, 30));
+		
+		btnRetour_2_2 = new JButton("Retour");
+		btnRetour_2_2.setName("retour");
+		btnRetour_2_2.setBackground(UIManager.getColor("Button.darkShadow"));
+		btnRetour_2_2.setBounds(12, 12, 117, 25);
+		AfficherParkings.add(btnRetour_2_2);
+		
+		//
+		
+		AfficherLocations = new JPanel();
+		layeredPane.add(AfficherLocations, "name_71647849530796");
+		AfficherLocations.setLayout(null);
+		table_2 = new JTable();
+		JScrollPane scrollPane3 = new JScrollPane();
+		scrollPane3.setBounds(0, 150, 990, 435);
+		AfficherLocations.add(scrollPane3);
+		table_2.setModel(new DefaultTableModel(new Object[][] {{null, null, null}}, new String[] {"test", "test", "test"}));
+		scrollPane3.setViewportView(table_2);
+		table_2.setBounds(50, 119, 900, 370);
+		
+		panel_3 = new JPanel();
+		panel_3.setBounds(0, 50, 990, 50);
+		AfficherLocations.add(panel_3);
+		
+		JLabel lblLocations = new JLabel("Locations: ");
+		panel_3.add(lblLocations);
+		lblLocations.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLocations.setFont(new Font("Dialog", Font.BOLD, 30));
+		
+		btnRetour_2_3 = new JButton("Retour");
+		btnRetour_2_3.setName("retour");
+		btnRetour_2_3.setBackground(UIManager.getColor("Button.darkShadow"));
+		btnRetour_2_3.setBounds(12, 12, 117, 25);
+		AfficherLocations.add(btnRetour_2_3);
+		
+		
 		
 	}
 	public JPanel getConnection() {
@@ -546,5 +685,32 @@ public class Fenetre extends JFrame {
 	}
 	public JPanel getAfficherCollaborateurs() {
 		return AfficherCollaborateurs;
+	}
+	public JButton getBtnRetour_2_1() {
+		return btnRetour_2_1;
+	}
+	public JButton getBtnCliquerIci_1_1_2() {
+		return btnCliquerIci_1_1_2;
+	}
+	public JButton getBtnRetour_2_2() {
+		return btnRetour_2_2;
+	}
+	public JTable getTable_1() {
+		return table_1;
+	}
+	public JTable getTable() {
+		return table;
+	}
+	public JButton getBtnCliquerIci_2() {
+		return btnCliquerIci_2;
+	}
+	public JButton getBtnRetour_2_3() {
+		return btnRetour_2_3;
+	}
+	public JTable getTable_2() {
+		return table_2;
+	}
+	public JButton getBtnRetour_2_1_1() {
+		return btnRetour_2_1_1;
 	}
 }

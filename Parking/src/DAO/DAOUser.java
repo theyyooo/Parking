@@ -108,4 +108,35 @@ public class DAOUser {
 			return true;
 		}
 	}
+	
+	public User findById(int id) throws SQLException {
+		
+		String SQL = "SELECT * FROM user WHERE id=?";
+		PreparedStatement preparedStatement = cnx.prepareStatement(SQL);
+		preparedStatement.setInt(1,id);
+		ResultSet result = preparedStatement.executeQuery();
+		result.next();
+		
+		User u = new User()
+				.setId(result.getInt("id"))
+				.setNom(result.getString("nom"))
+				.setPrenom(result.getString("prenom"))
+				.setMail(result.getString("mail"))
+				.setMdp(result.getString("mdp"))
+				;
+		return u;
+
+	}
+	
+	
+	
+	public boolean delete(User user) throws SQLException {
+		String SQL = "DELETE FROM user where id=?";
+		PreparedStatement preparedStatement = cnx.prepareStatement(SQL);
+		preparedStatement.setInt(1, user.id);
+		preparedStatement.executeQuery();
+		return true;
+		
+		
+	}
 }

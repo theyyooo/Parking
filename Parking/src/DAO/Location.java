@@ -18,6 +18,10 @@ public class Location {
 		this.date_fin = date_fin;
 		this.vehicule = vehicule;
 	}
+	
+	public Location() {
+		
+	}
 
 	public int getId() {
 		return id;

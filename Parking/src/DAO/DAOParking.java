@@ -66,4 +66,23 @@ public class DAOParking{
 
 		preparedStatement.executeQuery();
 	}
+	
+	public Parking findById(int id) throws SQLException {
+		
+		String SQL = "SELECT * FROM parking WHERE id=?";
+		PreparedStatement preparedStatement = cnx.prepareStatement(SQL);
+		preparedStatement.setInt(1,id);
+		ResultSet result = preparedStatement.executeQuery();
+		result.next();
+		
+		Parking p = new Parking()
+				.setId(result.getInt("id"))
+				.setName(result.getString("nom"))
+				.setPlace_moto(result.getInt("place_moto"))
+				.setPlace_velo(result.getInt("place_velo"))
+				.setPlace_voiture(result.getInt("place_voiture"))
+				;
+		return p;
+
+	}
 }

@@ -23,6 +23,8 @@ public class HomePageController implements ActionListener {
 		fenetre.getBtnCliquerIci_1().addActionListener(this);
 		fenetre.getBtnCliquerIci_1_1().addActionListener(this);
 		fenetre.getBtnCliquerIci_1_1_1().addActionListener(this);
+		fenetre.getBtnCliquerIci_2().addActionListener(this);
+		fenetre.getBtnCliquerIci_1_1_2().addActionListener(this);
 	}
 	
 	@Override
@@ -57,6 +59,20 @@ public class HomePageController implements ActionListener {
 		case "afficher_collaborateurs":
 			
 			AfficherCollaborateursController afficherCollaborateur = new AfficherCollaborateursController(fenetre, cnx);
+			
+			break;
+			
+		case "afficher_parkings":
+			
+			AfficherParkingsController afficherParking = new AfficherParkingsController(fenetre, cnx);
+			
+			break;
+			
+		case "afficher_locations":
+			
+			System.out.println("yes");
+			
+			AfficherLocationsController afficherLocations= new AfficherLocationsController(fenetre, cnx);
 			
 			break;
 			
